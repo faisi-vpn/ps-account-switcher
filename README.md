@@ -1,6 +1,6 @@
 # Portal Sekolah Account Switcher
 
-Extension Chrome buat ganti-ganti akun testing Portal Sekolah di local. Ga perlu logout terus login lagi di web.
+Extension Chrome buat ganti-ganti akun testing Portal Sekolah di local dan staging. Ga perlu logout terus login lagi di web.
 
 Simpan beberapa akun di extension. Pas namanya diklik, cookie login diganti, tab di-reload.
 
@@ -8,7 +8,7 @@ Simpan beberapa akun di extension. Pas namanya diklik, cookie login diganti, tab
 
 ## Kenapa ga dari halaman login
 
-Kalau masih ada cookie, `http://localhost:3000/login` langsung ke dashboard. Akun lain ga bisa dimasukin dari situ.
+Kalau masih ada cookie, halaman login langsung ke dashboard. Di local itu `http://localhost:3000/login`. Di staging sama aja, cuma domainnya `portal-sekolah.com`. Akun lain ga bisa dimasukin dari situ.
 
 Extension login sendiri lewat API, jadi tab yang lagi kebuka ga perlu dilogout dulu.
 
@@ -31,9 +31,12 @@ Pas nambah akun, ketik nama sekolah (minimal 3 huruf) lalu pilih dari daftar.
 
 ## Cara pakai
 
-### 1. Jalanin app local
+### 1. Buka tab yang mau diganti akunnya
 
-Login di `http://localhost:3000`. App yang ditest di `http://localhost:3001`. Tab boleh sudah login.
+- Local: login di `http://localhost:3000`, app yang ditest di `http://localhost:3001`
+- Staging: buka tab di `portal-sekolah.com` (misalnya management, guru, atau student)
+
+Tab boleh sudah login. Yang penting tab-nya lagi aktif pas akun di extension diklik.
 
 ### 2. Tambah akun
 
@@ -85,5 +88,7 @@ Tiap 10 menit, token akun yang tersimpan di-refresh. Pas akun diklik:
 ## Catatan
 
 - Password dan token disimpan di Chrome (`chrome.storage.local`), bukan di repo. Jangan install di komputer orang luar.
-- Cookie localhost kepakai di `:3000` dan `:3001`. `localStorage` tidak, karena origin-nya beda.
+- Local: cookie localhost kepakai di `:3000` dan `:3001`. `localStorage` tidak, karena origin-nya beda.
+- Staging: cookie dipasang ke domain `portal-sekolah.com`, jadi kepakai di subdomain-nya.
+- Akun yang disimpan di local bisa diklik juga di staging, dan sebaliknya. Backend-nya sama.
 - Kalau token access dan refresh dua-duanya sudah mati, klik akun itu lagi. Extension login ulang sendiri.
