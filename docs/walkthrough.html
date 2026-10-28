@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <title>Walkthrough</title>
+    <style>
+      :root {
+        --navy: #193560;
+        --blue: #034aa6;
+        --gold: #fbb315;
+        --bg: #f2f7ff;
+        --ok: #1abf73;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body {
+        width: 840px;
+        background: #d9e6f7;
+        font: 13px/1.4 "Noto Sans", "Segoe UI", sans-serif;
+        color: var(--navy);
+      }
+      .window {
+        width: 840px;
+        background: #fff;
+      }
+      .chrome {
+        background: #e8eaed;
+        padding: 8px 10px 0;
+        border-bottom: 1px solid #dadce0;
+      }
+      .tabs { display: flex; gap: 6px; }
+      .tab {
+        background: #fff;
+        border-radius: 8px 8px 0 0;
+        padding: 7px 12px;
+        font-size: 12px;
+        max-width: 220px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .omnibox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        margin: 6px 0 8px;
+        border-radius: 16px;
+        padding: 6px 12px;
+        font-size: 12px;
+        color: #5f6368;
+      }
+      .stage { position: relative; height: 420px; background: var(--bg); overflow: hidden; }
+      .caption {
+        background: var(--navy);
+        color: #fff;
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .caption span { color: var(--gold); margin-right: 8px; }
+      .ext { padding: 18px 22px; }
+      .ext h1 { margin: 0 0 12px; font-size: 20px; }
+      .row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+      .toggle {
+        width: 36px; height: 18px; border-radius: 999px; background: #c5cdd8; position: relative;
+      }
+      .toggle.on { background: var(--blue); }
+      .toggle::after {
+        content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px;
+        background: #fff; border-radius: 50%;
+      }
+      .toggle.on::after { left: 20px; }
+      .btn {
+        border: 1px solid #b7d6ff; background: #fff; color: var(--navy);
+        border-radius: 6px; padding: 6px 10px; font-weight: 600;
+      }
+      .btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+      .btn.glow { outline: 3px solid var(--gold); }
+      .card {
+        display: flex; gap: 12px; align-items: center;
+        background: #fff; border: 1px solid #e3edfd; border-radius: 8px; padding: 12px;
+      }
+      .mark { width: 36px; height: 26px; }
+      .dash { padding: 18px 22px; }
+      .dash h2 { margin: 0 0 6px; }
+      .muted { color: #5a7194; font-size: 12px; }
+      .popup {
+        position: absolute; right: 18px; top: 12px; width: 320px;
+        background: var(--bg); border: 1px solid #e3edfd; border-radius: 10px;
+        box-shadow: 0 10px 28px rgba(25, 53, 96, 0.18); overflow: hidden;
+      }
+      .popup .top {
+        display: flex; gap: 8px; align-items: center; padding: 10px 12px;
+        background: #fff; border-bottom: 3px solid var(--gold);
+      }
+      .popup .body { padding: 10px 12px 12px; }
+      .item {
+        display: flex; justify-content: space-between; align-items: center;
+        background: #fff; border: 1px solid #e3edfd; border-radius: 8px;
+        padding: 8px 10px; margin-top: 8px;
+      }
+      .item.active { border-color: var(--blue); box-shadow: inset 3px 0 0 var(--gold); }
+      .item.pick { outline: 3px solid var(--gold); }
+      .field { margin-top: 8px; }
+      .field label { display: block; font-size: 11px; color: #5a7194; margin-bottom: 4px; }
+      .field div {
+        background: #fff; border: 1px solid #b7d6ff; border-radius: 6px; padding: 7px 10px;
+      }
+      .pointer {
+        position: absolute; width: 16px; height: 16px; border-radius: 50%;
+        background: var(--gold); border: 3px solid #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,.25); z-index: 5;
+      }
+      .only { display: none; }
+      body[data-step="1"] .s1,
+      body[data-step="2"] .s2,
+      body[data-step="3"] .s3,
+      body[data-step="4"] .s4,
+      body[data-step="5"] .s5,
+      body[data-step="6"] .s6,
+      body[data-step="7"] .s7 { display: block; }
+    </style>
+  </head>
+  <body data-step="1">
+    <div class="window">
+      <div class="chrome">
+        <div class="tabs">
+          <div class="tab" id="tabLabel">Extensions</div>
+        </div>
+        <div class="omnibox" id="urlLabel">chrome://extensions</div>
+      </div>
+      <div class="stage">
+        <div class="only s1 s2 s3 ext">
+          <div class="row">
+            <h1>Extensions</h1>
+            <div>
+              <div class="muted" style="text-align:right;margin-bottom:4px">Developer mode</div>
+              <div class="toggle" id="devToggle"></div>
+            </div>
+          </div>
+          <button class="btn" id="loadBtn">Load unpacked</button>
+          <div class="card" id="extCard" style="margin-top:18px;display:none">
+            <img class="mark" src="../icons/ps-mark.svg" alt="" />
+            <div>
+              <strong>Portal Sekolah Account Switcher</strong>
+              <div class="muted">Load unpacked</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="only s4 s5 s6 s7 dash">
+          <h2 id="dashTitle">Dashboard Admin</h2>
+          <p class="muted" id="dashUser">Sedang login sebagai Admin</p>
+        </div>
+
+        <div class="popup only s5 s6">
+          <div class="top">
+            <img class="mark" src="../icons/ps-mark.svg" alt="" />
+            <div>
+              <strong>Account Switcher</strong>
+              <div class="muted">http://localhost:3001</div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="only s5">
+              <div class="field"><label>Nama tampilan</label><div>Teacher</div></div>
+              <div class="field"><label>Sekolah</label><div>Nama sekolah</div></div>
+              <div class="field"><label>Username</label><div>username</div></div>
+              <div class="field"><label>Password</label><div>••••••••</div></div>
+              <div style="margin-top:10px"><button class="btn primary">Tambah akun</button></div>
+            </div>
+            <div class="only s6">
+              <div class="item active"><span>Admin</span><span class="muted">admin</span></div>
+              <div class="item pick"><span>Teacher</span><span class="muted">teacher</span></div>
+              <div class="item"><span>Student</span><span class="muted">student</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pointer" id="pointer"></div>
+      </div>
+      <div class="caption" id="caption"><span>1/7</span> Nyalakan Developer mode</div>
+    </div>
+    <script>
+      const steps = {
+        1: { url: "chrome://extensions", tab: "Extensions", caption: "Nyalakan Developer mode", pointer: [760, 78] },
+        2: { url: "chrome://extensions", tab: "Extensions", caption: "Klik Load unpacked, pilih folder clone", pointer: [92, 118] },
+        3: { url: "chrome://extensions", tab: "Extensions", caption: "Extension sudah terpasang. Pin ikon PS", pointer: [220, 168] },
+        4: { url: "http://localhost:3001", tab: "Portal Sekolah", caption: "Buka tab local atau staging", pointer: [0, 0] },
+        5: { url: "http://localhost:3001", tab: "Portal Sekolah", caption: "Tambah akun dari popup extension", pointer: [620, 310] },
+        6: { url: "http://localhost:3001", tab: "Portal Sekolah", caption: "Klik akun di daftar buat ganti sesi", pointer: [690, 175] },
+        7: { url: "http://localhost:3001", tab: "Portal Sekolah", caption: "Tab reload. Sekarang masuk sebagai Teacher", pointer: [0, 0] },
+      };
+      const step = Number(new URLSearchParams(location.search).get("step") || 1);
+      document.body.dataset.step = String(step);
+      const cfg = steps[step];
+      document.getElementById("urlLabel").textContent = cfg.url;
+      document.getElementById("tabLabel").textContent = cfg.tab;
+      document.getElementById("caption").innerHTML = "<span>" + step + "/7</span> " + cfg.caption;
+      const toggle = document.getElementById("devToggle");
+      const loadBtn = document.getElementById("loadBtn");
+      const extCard = document.getElementById("extCard");
+      if (step >= 2) toggle.classList.add("on");
+      if (step === 2) loadBtn.classList.add("glow");
+      if (step >= 3) extCard.style.display = "flex";
+      if (step === 7) {
+        document.getElementById("dashTitle").textContent = "Dashboard Teacher";
+        document.getElementById("dashUser").textContent = "Sedang login sebagai Teacher";
+      }
+      const pointer = document.getElementById("pointer");
+      if (!cfg.pointer[0]) pointer.style.display = "none";
+      else {
+        pointer.style.left = cfg.pointer[0] + "px";
+        pointer.style.top = cfg.pointer[1] + "px";
+      }
+    </script>
+  </body>
+</html>

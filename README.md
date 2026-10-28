@@ -4,7 +4,9 @@ Extension Chrome buat ganti-ganti akun testing Portal Sekolah di local dan stagi
 
 Simpan beberapa akun di extension. Pas namanya diklik, cookie login diganti, tab di-reload.
 
-![Daftar akun Admin, Teacher, Student](docs/screenshots/popup-list.png)
+Alur install sampai ganti akun:
+
+![Walkthrough install dan ganti akun](docs/screenshots/walkthrough.gif)
 
 ## Kenapa ga dari halaman login
 
@@ -30,6 +32,8 @@ Pakai akun testing yang biasa dipakai tim (admin, guru, siswa). Username dan pas
 Pas nambah akun, ketik nama sekolah (minimal 3 huruf) lalu pilih dari daftar.
 
 ## Cara pakai
+
+GIF di atas recap dari install sampai ganti akun. Detailnya di bawah.
 
 ### 1. Buka tab yang mau diganti akunnya
 
