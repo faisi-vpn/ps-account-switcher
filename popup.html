@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PS Switcher</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img class="brand-mark" src="icons/ps-mark.svg" alt="" />
+      <div>
+        <h1>Account Switcher</h1>
+        <p id="originLabel" class="muted">Membaca tab...</p>
+      </div>
+    </header>
+
+    <section id="currentCard" class="card"></section>
+
+    <form id="addForm" class="save-form" hidden>
+      <p class="hint">Login lewat API. Tab yang sedang terbuka tidak ikut berubah sampai akun diklik.</p>
+      <label for="profileName">Nama tampilan</label>
+      <input id="profileName" name="profileName" type="text" maxlength="48" placeholder="Guru SMP" autocomplete="off" />
+
+      <label for="schoolSearch">Sekolah</label>
+      <div class="school-wrap">
+        <input id="schoolSearch" name="schoolSearch" type="text" placeholder="Ketik min. 3 huruf" autocomplete="off" />
+        <input id="schoolId" type="hidden" />
+        <ul id="schoolResults" class="school-results" hidden></ul>
+      </div>
+
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" />
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" />
+
+      <div class="row">
+        <button type="submit" class="btn primary" id="addSubmit">Tambah akun</button>
+        <button type="button" id="cancelAdd" class="btn">Batal</button>
+      </div>
+    </form>
+
+    <form id="saveForm" class="save-form" hidden>
+      <label for="snapshotName">Nama sesi saat ini</label>
+      <input id="snapshotName" name="snapshotName" type="text" maxlength="48" placeholder="Admin yang sedang login" autocomplete="off" />
+      <div class="row">
+        <button type="submit" class="btn primary">Simpan snapshot</button>
+        <button type="button" id="cancelSave" class="btn">Batal</button>
+      </div>
+    </form>
+
+    <section class="list-wrap">
+      <div class="list-head">
+        <h2>Akun tersimpan</h2>
+        <span id="profileCount" class="muted"></span>
+      </div>
+      <ul id="profileList"></ul>
+      <p id="emptyState" class="empty" hidden>
+        Tambah akun dari form. Tidak perlu logout dari tab yang sedang login.
+      </p>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+    <script src="auth.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

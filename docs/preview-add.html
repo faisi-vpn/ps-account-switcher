@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <title>Preview: tambah akun</title>
+    <link rel="stylesheet" href="../popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img class="brand-mark" src="../icons/ps-mark.svg" alt="" />
+      <div>
+        <h1>Account Switcher</h1>
+        <p class="muted">http://localhost:3001</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="identity">
+        <span class="dot" style="background:#034aa6"></span>
+        <div>
+          <div class="name">Admin</div>
+          <div class="meta">admin</div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn primary">Tambah akun</button>
+        <button type="button" class="btn">Simpan snapshot</button>
+        <button type="button" class="btn ghost">Kosongkan sesi</button>
+      </div>
+    </section>
+
+    <form class="save-form">
+      <p class="hint">Login lewat API. Tab yang sedang terbuka tidak ikut berubah sampai akun diklik.</p>
+      <label>Nama tampilan</label>
+      <input type="text" value="Teacher" readonly />
+      <label>Sekolah</label>
+      <input type="text" value="Nama sekolah" readonly />
+      <label>Username</label>
+      <input type="text" value="username" readonly />
+      <label>Password</label>
+      <input type="password" value="••••••••" readonly />
+      <div class="row">
+        <button type="button" class="btn primary">Tambah akun</button>
+        <button type="button" class="btn">Batal</button>
+      </div>
+    </form>
+    <p class="status">Login ke API...</p>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <title>Preview: daftar akun</title>
+    <link rel="stylesheet" href="../popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img class="brand-mark" src="../icons/ps-mark.svg" alt="" />
+      <div>
+        <h1>Account Switcher</h1>
+        <p class="muted">http://localhost:3001</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="identity">
+        <span class="dot" style="background:#034aa6"></span>
+        <div>
+          <div class="name">Admin</div>
+          <div class="meta">admin · 6 cookie</div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn primary">Tambah akun</button>
+        <button type="button" class="btn">Simpan snapshot</button>
+        <button type="button" class="btn ghost">Kosongkan sesi</button>
+      </div>
+    </section>
+
+    <section class="list-wrap">
+      <div class="list-head">
+        <h2>Akun tersimpan</h2>
+        <span class="muted">3</span>
+      </div>
+      <ul id="profileList">
+        <li>
+          <div class="profile active">
+            <button type="button" class="switch">
+              <span class="dot" style="background:#034aa6"></span>
+              <span>
+                <span class="title">Admin</span>
+                <span class="meta">admin · login</span>
+              </span>
+            </button>
+            <span class="actions">
+              <button type="button" class="btn icon ghost">↻</button>
+              <button type="button" class="btn icon danger">✕</button>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div class="profile">
+            <button type="button" class="switch">
+              <span class="dot" style="background:#fbb315"></span>
+              <span>
+                <span class="title">Teacher</span>
+                <span class="meta">teacher · login</span>
+              </span>
+            </button>
+            <span class="actions">
+              <button type="button" class="btn icon ghost">↻</button>
+              <button type="button" class="btn icon danger">✕</button>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div class="profile">
+            <button type="button" class="switch">
+              <span class="dot" style="background:#1abf73"></span>
+              <span>
+                <span class="title">Student</span>
+                <span class="meta">student · login</span>
+              </span>
+            </button>
+            <span class="actions">
+              <button type="button" class="btn icon ghost">↻</button>
+              <button type="button" class="btn icon danger">✕</button>
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <p class="status ok">Sudah masuk sebagai Admin.</p>
+  </body>
+</html>
